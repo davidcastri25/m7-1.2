@@ -35,7 +35,7 @@ class Cohete {
 
 
     acelerar() { //Aumentará en 10 la potencia de cada propulsor, sin superar su potencia máxima
-        let potenciaPropulsoresAceleracion: number[] = []; //Creamos nueva variable donde almacenar las nuevas potencias después de la aceleración
+        let potenciaPropulsoresAceleracion: any[] = []; //Creamos nueva variable donde almacenar las nuevas potencias después de la aceleración
         let potenciaTotal: number; //Creamos nueva variable donde almacenar la nueva potencia total
 
         //Usamos Map
@@ -61,6 +61,27 @@ class Cohete {
 
 
     frenar() { //Reducirá en 10 la potencia de cada propulsor, sin bajar de 0
+        let potenciaPropulsoresFrenada: any[] = []; //Creamos nueva variable donde almacenar las nuevas potencias después de la frenada
+        let potenciaTotal: number; //Creamos nueva variable donde almacenar la nueva potencia total
 
+        //Usamos Map
+        potenciaPropulsoresFrenada = this.potenciaPropulsoresActual.map((currentValue: number, index: number) => {
+            
+            //Si la potencia actual menos 10 del propulsor en el que estamos es menor a 0, NO frenamos. En caso contrario, frenamos y restamos 10 a la potencia actual del propulsor
+            if (!(currentValue - 10 < 0)){
+                return currentValue - 10;
+            }
+        });
+
+        //La potencia mínima es 0, por tanto tenemos que mirar la potencia total del nuevo array, para ello hacemos reduce
+        potenciaTotal = potenciaPropulsoresFrenada.reduce((total: number, currentValue: number) => {
+            return total += currentValue;
+        });
+
+        //Si la potencia total después de la frenada es mayor o igual a 0, podremos actualizar las propiedades del objeto
+        if (potenciaTotal >= 0) {
+            this.potenciaPropulsoresActual = potenciaPropulsoresFrenada;
+            this.potenciaTotalActual = potenciaTotal;
+        }
     }
 }
