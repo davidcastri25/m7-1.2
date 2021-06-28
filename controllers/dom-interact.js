@@ -14,3 +14,8 @@ var PROPULSOR_5 = COHETE_FORM.querySelector("#propulsorCohete5");
 var PROPULSOR_6 = COHETE_FORM.querySelector("#propulsorCohete6");
 //Guardo lista de todos los propulsores
 var PROPULSORES = COHETE_FORM.querySelectorAll("input.propulsor");
+//Guardo lista de todos inputs (propulsores y codigo)
+var FORM_INPUTS = COHETE_FORM.querySelectorAll("input");
+/* ////////// Sección de container donde mostrar datos de cohetes ////////// */
+//Guardo div donde irá la info de los cohetes que mostremos
+var CONTAINER = document.querySelector("#cohetesInfo");

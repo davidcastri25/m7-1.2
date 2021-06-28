@@ -53,21 +53,32 @@
                             <h5 class="modal-title">Reglas</h5>
                         </div>
                         <div class="modal-body">
-                            <h5>Creación de cohetes</h5>
-                            <p class="text-justify">
-                                Para crear un cohete es necesario asignarle un código, que debe estar formado por 8
-                                caracteres (pueden ser letras o números).
-                            </p>
-                            <p class="text-justify">
-                                Cada cohete necesitará propulsores para
-                                moverse: debemos indicar en el formulario la potencia máxima de cada propulsor del
-                                cohete. La potencia de un propulsor se indica a través de múltiplos de 10 (potencia
-                                mínima 10, potencia máxima 100).
-                            </p>
-                            <p class="text-justify">
-                                Un cohete necesita un mínimo de un propulsor (el propulsor 1) y no puede tener más de 6
-                                propulsores.
-                            </p>
+                            <div class="mb-4">
+                                <h5>Creación de cohetes</h5>
+                                <p class="text-justify">
+                                    Para crear un cohete es necesario asignarle un código, que debe estar formado por 8
+                                    caracteres (pueden ser letras o números).
+                                </p>
+                                <p class="text-justify">
+                                    Cada cohete necesitará propulsores para
+                                    moverse: debemos indicar en el formulario la potencia máxima de cada propulsor del
+                                    cohete. La potencia de un propulsor se indica a través de múltiplos de 10 (potencia
+                                    mínima 10, potencia máxima 100).
+                                </p>
+                                <p class="text-justify">
+                                    Un cohete necesita un mínimo de un propulsor (el propulsor 1) y no puede tener más de 6
+                                    propulsores.
+                                </p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Funcionamiento de la aplicación web</h5>
+                                <p class="text-justify">
+                                    Podrás usar el formulario para crear cohetes. Para poder iniciar la partida debe haber un mínimo de 2 cohetes creados, mientras que el número máximo de cohetes será de 99999999.
+                                </p>
+                                <p class="text-justify">
+                                    Una vez generados los cohetes que desees, puedes iniciar la aplicación mediante el botón de iniciar partida. Este botón hará aparecer el menú de cada cohete con las opciones que se pueden aplicar a cada uno, además de un botón para que aparezcan por pantalla los datos de todos los cohetes.
+                                </p>
+                            </div>                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
@@ -181,7 +192,7 @@
 
             <!-- Output list -->
             <div>
-                <ul class="item-list list-unstyled p-3" id="cohetesInfo">
+                <ul class="item-list list-unstyled p-3 row d-flex justify-content-evenly" id="cohetesInfo">
 
                 </ul>
             </div>

@@ -17,3 +17,11 @@ const PROPULSOR_6 = COHETE_FORM.querySelector("#propulsorCohete6") as HTMLInputE
 
 //Guardo lista de todos los propulsores
 const PROPULSORES = COHETE_FORM.querySelectorAll("input.propulsor") as NodeListOf<HTMLInputElement>;
+
+//Guardo lista de todos inputs (propulsores y codigo)
+const FORM_INPUTS = COHETE_FORM.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+
+
+/* ////////// Sección de container donde mostrar datos de cohetes ////////// */
+//Guardo div donde irá la info de los cohetes que mostremos
+const CONTAINER = document.querySelector("#cohetesInfo") as HTMLUListElement;
