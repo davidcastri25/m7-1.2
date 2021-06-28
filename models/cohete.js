@@ -1,7 +1,7 @@
 "use strict";
 //Clase cohete
 var Cohete = /** @class */ (function () {
-    //Constructor, solamente necesitará el código del cohete
+    //Constructor, solamente necesitará el código del cohete y el array con la potencia máxima de los propulsores
     function Cohete(codigo, propulsores) {
         this.codigo = codigo;
         this.propulsores = propulsores;
@@ -25,8 +25,8 @@ var Cohete = /** @class */ (function () {
         var potenciaTotal; //Creamos nueva variable donde almacenar la nueva potencia total
         //Usamos Map
         potenciaPropulsoresAceleracion = this.potenciaPropulsoresActual.map(function (currentValue, index) {
-            //Si la potencia actual + 10 del propulsor en el que estamos es mayor o igual a la potencia máxima del propulsor, NO aceleramos
-            if (currentValue + 10 >= _this.propulsores[index]) {
+            //Si la potencia actual + 10 del propulsor en el que estamos es mayor a la potencia máxima del propulsor, NO aceleramos. En caso contrario, aceleramos y sumamos 10 a la potencia actual del propulsor
+            if (!(currentValue + 10 > _this.propulsores[index])) {
                 return currentValue + 10;
             }
         });

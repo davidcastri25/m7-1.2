@@ -10,7 +10,7 @@ class Cohete {
     potenciaPropulsoresActual: number[];
 
 
-    //Constructor, solamente necesitará el código del cohete
+    //Constructor, solamente necesitará el código del cohete y el array con la potencia máxima de los propulsores
     constructor(codigo: string, propulsores: number[]) {
         this.codigo = codigo;
         this.propulsores = propulsores;
@@ -20,7 +20,7 @@ class Cohete {
 
 
     //Métodos
-    calcularPotenciaInicial(): number[] {
+    calcularPotenciaInicial(): number[] { //Nos añadirá tantos 0 como la length de this.propulsores
         //Creamos un array
         let potenciaInicial: number[] = [];
 
@@ -41,8 +41,8 @@ class Cohete {
         //Usamos Map
         potenciaPropulsoresAceleracion = this.potenciaPropulsoresActual.map((currentValue: number, index: number) => {
             
-            //Si la potencia actual + 10 del propulsor en el que estamos es mayor o igual a la potencia máxima del propulsor, NO aceleramos
-            if (currentValue + 10 >= this.propulsores[index]){
+            //Si la potencia actual + 10 del propulsor en el que estamos es mayor a la potencia máxima del propulsor, NO aceleramos. En caso contrario, aceleramos y sumamos 10 a la potencia actual del propulsor
+            if (!(currentValue + 10 > this.propulsores[index])){
                 return currentValue + 10;
             }
         });
