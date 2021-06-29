@@ -22,6 +22,8 @@ var CONTAINER = document.querySelector("#cohetesInfo");
 /* ////////// Botón de iniciar partida ////////// */
 var START_BUTTON = document.querySelector("#startButton");
 /* ////////// Sección de menú de acciones ////////// */
+//Guardo sección menú
+var MENU_SECTION = document.querySelector("#seccionMenu");
 //Guardo select
 var SELECT_COHETE = document.querySelector("#selectCohete");
 //Guardo botones

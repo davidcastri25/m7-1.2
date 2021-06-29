@@ -33,6 +33,9 @@ const START_BUTTON = document.querySelector("#startButton") as HTMLButtonElement
 
 
 /* ////////// Sección de menú de acciones ////////// */
+//Guardo sección menú
+const MENU_SECTION = document.querySelector("#seccionMenu") as HTMLDivElement;
+
 //Guardo select
 const SELECT_COHETE = document.querySelector("#selectCohete") as HTMLSelectElement;
 

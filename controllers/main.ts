@@ -42,7 +42,7 @@ START_BUTTON.addEventListener("click", (e: Event) => {
     }
     else {
         //Primero ocultamos el formulario de cohetes y hacemos visible el menú de acciones
-        //PENDIENTE///////////////////////////////////////////////////////////
+        cambiarSecciones();
 
         //Limpiamos la sección de Datos de Cohetes
         CONTAINER.innerText = "";
@@ -88,7 +88,7 @@ FRENAR_BUTTON.addEventListener("click", (e: Event) => {
     }    
 });
 
-/* ////////// Botón de frenar ////////// */
+/* ////////// Botón de mostrar un cohete concreto de la select ////////// */
 MOSTRAR_BUTTON.addEventListener("click", (e: Event) => {
     let errores: number;
     let codigo: string
@@ -100,8 +100,15 @@ MOSTRAR_BUTTON.addEventListener("click", (e: Event) => {
         //Guardamos en una variable el código del cohete seleccionado en la select
         codigo = SELECT_COHETE.value;
         
-        //Llamamos a la función frenar cohete pasándole el código del cohete en cuestión
+        //Llamamos a la función de mostrar cohete seleccionado en la select
         mostrarCoheteSelec(codigo);
     }    
+});
+
+
+/* ////////// Botón de mostrar todos los cohetes ////////// */
+MOSTRAR_ALL_BUTTON.addEventListener("click", (e: Event) => {
+    //Llamamos a la función de mostrar todos los cohetes y todos los datos
+    mostrarAllCohetes();
 });
 

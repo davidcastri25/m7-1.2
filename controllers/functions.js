@@ -172,3 +172,59 @@ function mostrarCoheteSelec(codigo) {
     //En el container que hemos asignado en dom-interact añadimos el li
     CONTAINER.append(li);
 }
+/* ////////// Mostramos objetos Cohetes, fase de menú de acción ////////// */
+function mostrarAllCohetes() {
+    //Declaramos las variables que vamos a usar
+    var li; //Elemento que va a contener toda la información por cada cohete, sería como una ficha de cohete
+    var h5; //Aquí irá el título del cohete
+    var pCodigo, pPropulsores, pPotenciaMaxima, pPotenciaPropActual, pPotenciaTotalActual; //Aquí irán los datos del cohete
+    //Primero borramos todos los elementos hijos de container existenes, ya que vamos a generar de nuevo la lista
+    CONTAINER.innerHTML = '';
+    //Recorro el array de BBDD
+    cohetesBBDD.forEach(function (element, index) {
+        //Creamos la entrada en la lista para el coche en cuestión
+        li = document.createElement("li");
+        //Añadimos clases    
+        li.classList.add("col-md-3");
+        li.classList.add("mx-1");
+        li.classList.add("mb-4");
+        li.classList.add("p-2");
+        li.classList.add("border");
+        li.classList.add("border-danger");
+        li.classList.add("rounded");
+        li.classList.add("border-2");
+        //Creamos un encabezado
+        h5 = document.createElement("h5");
+        h5.innerText = "Cohete número " + (index + 1) + ":";
+        li.append(h5); //Añadimos el encabezado al li
+        //Creamos parágrafos
+        pCodigo = document.createElement("p");
+        pPropulsores = document.createElement("p");
+        pPotenciaMaxima = document.createElement("p");
+        pPotenciaPropActual = document.createElement("p");
+        pPotenciaTotalActual = document.createElement("p");
+        //Insertamos el texto correspondiente
+        pCodigo.innerText = "Código: " + element.codigo;
+        pPropulsores.innerText = "Máxima potencia de cada propulsor: " + element.propulsores;
+        pPotenciaMaxima.innerText = "Potencia máxima total del cohete: " + element.potenciaMaximaCohete;
+        pPotenciaPropActual.innerText = "Potencia actual de cada propulsor: " + element.potenciaPropulsoresActual;
+        pPotenciaTotalActual.innerText = "Potencia total del cohete actualmente: " + element.potenciaTotalActual;
+        //Añadimos los parágrafos
+        li.append(pCodigo);
+        li.append(pPropulsores);
+        li.append(pPotenciaMaxima);
+        li.append(pPotenciaPropActual);
+        li.append(pPotenciaTotalActual);
+        //En el container que hemos asignado en dom-interact añadimos el li
+        CONTAINER.append(li);
+    });
+}
+/* ////////// Ocultamos sección de formulario y mostramos menú de acción ////////// */
+function cambiarSecciones() {
+    //Eliminamos la clase d-block del formulario y la sustituimos por d-none
+    FORM_SECTION.classList.remove("d-block");
+    FORM_SECTION.classList.add("d-none");
+    //Eliminamos la clase d-none del menú y la sustituimos por d-block
+    MENU_SECTION.classList.remove("d-none");
+    MENU_SECTION.classList.add("d-block");
+}
