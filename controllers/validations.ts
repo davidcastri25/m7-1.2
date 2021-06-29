@@ -63,6 +63,29 @@ function coheteValidate(): number {
 }
 
 
+/* ////////// Función de validación de select ////////// */
+function selectValidate(): number {
+    //Contador de errores
+    let acumErrores: number = 0;
+
+    //Eliminamos todos los posibles is-invalid que aparezcan en la lista de clases de cada elemento del formulario
+    SELECT_COHETE.classList.remove("is-invalid");
+
+    //Validamos código
+    if (SELECT_COHETE.value == "Selecciona un cohete") {
+        //Añadimos clase is-invalid
+        SELECT_COHETE.classList.add("is-invalid");
+        //Sacamos mensaje de error en el div correspondiente
+        document.querySelector("#errorSelect")!.textContent = "Debes seleccionar un cohete";
+        //Sumamos 1 al contador
+        acumErrores++;
+    }
+
+    //Devolvemos el acumulador de errores
+    return acumErrores;
+}
+
+
 /* ////////// Validar código de cohete mediante regex ////////// */
 function validarCodigo(codigo: string): boolean {
     //Declaramos expresión regular: 8 caracteres, letras mayúsculas o números

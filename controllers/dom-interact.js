@@ -19,3 +19,13 @@ var FORM_INPUTS = COHETE_FORM.querySelectorAll("input");
 /* ////////// Sección de container donde mostrar datos de cohetes ////////// */
 //Guardo div donde irá la info de los cohetes que mostremos
 var CONTAINER = document.querySelector("#cohetesInfo");
+/* ////////// Botón de iniciar partida ////////// */
+var START_BUTTON = document.querySelector("#startButton");
+/* ////////// Sección de menú de acciones ////////// */
+//Guardo select
+var SELECT_COHETE = document.querySelector("#selectCohete");
+//Guardo botones
+var ACELERAR_BUTTON = document.querySelector("#acelerarButton");
+var FRENAR_BUTTON = document.querySelector("#frenarButton");
+var MOSTRAR_BUTTON = document.querySelector("#mostrarButton");
+var MOSTRAR_ALL_BUTTON = document.querySelector("#mostrarAllButton");

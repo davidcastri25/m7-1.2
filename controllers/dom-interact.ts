@@ -23,5 +23,21 @@ const FORM_INPUTS = COHETE_FORM.querySelectorAll("input") as NodeListOf<HTMLInpu
 
 
 /* ////////// Sección de container donde mostrar datos de cohetes ////////// */
+
 //Guardo div donde irá la info de los cohetes que mostremos
 const CONTAINER = document.querySelector("#cohetesInfo") as HTMLUListElement;
+
+
+/* ////////// Botón de iniciar partida ////////// */
+const START_BUTTON = document.querySelector("#startButton") as HTMLButtonElement;
+
+
+/* ////////// Sección de menú de acciones ////////// */
+//Guardo select
+const SELECT_COHETE = document.querySelector("#selectCohete") as HTMLSelectElement;
+
+//Guardo botones
+const ACELERAR_BUTTON = document.querySelector("#acelerarButton") as HTMLButtonElement;
+const FRENAR_BUTTON = document.querySelector("#frenarButton") as HTMLButtonElement;
+const MOSTRAR_BUTTON = document.querySelector("#mostrarButton") as HTMLButtonElement;
+const MOSTRAR_ALL_BUTTON = document.querySelector("#mostrarAllButton") as HTMLButtonElement;

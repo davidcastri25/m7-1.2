@@ -33,103 +33,75 @@ COHETE_FORM.addEventListener("submit", (e: Event) => {
 
 
 /* ////////// Botón de iniciar partida ////////// */
+START_BUTTON.addEventListener("click", (e: Event) => {
+    //Variables
+
+    //Primero comprobaremos que hay mínimo dos cohetes creados
+    if (cohetesBBDD.length < 2) {
+        alert("Para iniciar el juego deben generarse almenos 2 cohetes.");
+    }
+    else {
+        //Primero ocultamos el formulario de cohetes y hacemos visible el menú de acciones
+        //PENDIENTE///////////////////////////////////////////////////////////
+
+        //Limpiamos la sección de Datos de Cohetes
+        CONTAINER.innerText = "";
+
+        //Añadir al select los códigos de los cohetes creados, para que podamos seleccionar el cohete en función de su código
+        montarSelect();
+    }    
+});
 
 
-/* ////////// Creamos objeto Cohete ////////// */
-function crearCohete(): void {
-    //Declaro e inicializo variables necesarias para crear el objeto
-    let codigo: string = "";
-    let propulsores: number[] = [];
+/* ////////// Botón de acelerar ////////// */
+ACELERAR_BUTTON.addEventListener("click", (e: Event) => {
+    let errores: number;
+    let codigo: string
 
-    //El código del nuevo cohete será el valor correspondiente en el formulario
-    codigo = CODIGO.value;
+    //Validamos que hayamos seleccionado una opción válida en la select
+    errores = selectValidate();
 
-    //Si los inputs de propulsores no están vacíos, haremos un push del valor que figure
-    PROPULSORES.forEach(input => {
-        if (input.value != "") {
-            propulsores.push(parseInt(input.value));
-        }
-    });
-
-    //Creamos el nuevo objeto Cohete
-    cohete = new Cohete (codigo, propulsores);
-
-    //Añadimos el objeto a nuestro array BBDD
-    cohetesBBDD.push(cohete);    
-}
-
-
-/* ////////// Mostramos objetos Cohetes ////////// */
-function mostrarCohetes(): void {
-    //Declaramos las variables que vamos a usar
-    let li: HTMLLIElement; //Elemento que va a contener toda la información por cada cohete, sería como una ficha de cohete
-    let h5; //Aquí irá el título del cohete
-    let pCodigo, pPropulsores; //Aquí irán los datos del cohete
-
-    //Primero borramos todos los elementos hijos de container existenes, ya que vamos a generar de nuevo la lista
-    CONTAINER.innerHTML = '';
-
-    //Recorro el array de BBDD
-    cohetesBBDD.forEach((element, index) => {
+    if (errores == 0) {
+        //Guardamos en una variable el código del cohete seleccionado en la select
+        codigo = SELECT_COHETE.value;
         
-        //Creamos la entrada en la lista para el coche en cuestión
-        li = document.createElement("li");        
-        //Añadimos clases    
-        li.classList.add("col-md-3");
-        li.classList.add("mx-1");
-        li.classList.add("mb-4");
-        li.classList.add("p-2");
-        li.classList.add("border");
-        li.classList.add("border-danger");
-        li.classList.add("rounded");
-        li.classList.add("border-2");
-
-        //Creamos un encabezado
-        h5 = document.createElement("h5");
-        h5.innerText = "Cohete número " + (index + 1) + ":";
-        li.append(h5); //Añadimos el encabezado al li
-
-        //Creamos parágrafos
-        pCodigo = document.createElement("p");
-        pPropulsores = document.createElement("p");   
-        //Insertamos el texto correspondiente
-        pCodigo.innerText = "Código: " + element.codigo;        
-        pPropulsores.innerText = "Máxima potencia de cada propulsor: " + element.propulsores;      
-        //Añadimos los parágrafos
-        li.append(pCodigo);
-        li.append(pPropulsores);   
-
-        //En el container que hemos asignado en dom-interact añadimos el li
-        CONTAINER.append(li);
-    });    
-}
+        //Llamamos a la función acelerar cohete pasándole el código del cohete en cuestión
+        acelerarCohete(codigo);
+    }    
+});
 
 
-/* ////////// Función para limpiar formulario ////////// */
-function limpiarForm(): void {
+/* ////////// Botón de frenar ////////// */
+FRENAR_BUTTON.addEventListener("click", (e: Event) => {
+    let errores: number;
+    let codigo: string
+
+    //Validamos que hayamos seleccionado una opción válida en la select
+    errores = selectValidate();
+
+    if (errores == 0) {
+        //Guardamos en una variable el código del cohete seleccionado en la select
+        codigo = SELECT_COHETE.value;
         
-    //Recorremos el NodeList de todos los inputs del formulario
-    FORM_INPUTS.forEach(input => {
-        //Vaciamos el input
-        input.value = "";
+        //Llamamos a la función frenar cohete pasándole el código del cohete en cuestión
+        frenamosCohete(codigo);
+    }    
+});
 
-        //Si el input tiene la clase is-valid de bootstrap, la sacamos (is-invalid no la puede tener porque el programa no avanzaría)
-        if(input.classList.contains("is-valid")) {
-            input.classList.remove("is-valid");
-        }
-    });
-}
+/* ////////// Botón de frenar ////////// */
+MOSTRAR_BUTTON.addEventListener("click", (e: Event) => {
+    let errores: number;
+    let codigo: string
 
+    //Validamos que hayamos seleccionado una opción válida en la select
+    errores = selectValidate();
 
-/* ////////// Fes una funció que calculi la potència màxima del coet (serà el sumatori de les potències màximes dels propulsors) ////////// */
-function calcularPotenciaMaxima(propulsores: number[]): number {
-    let potenciaMaximaCohete: number = 0; //Esta variable será la potencia máxima del cohete, el sumatorio de las potencias máximas de los propulsores
+    if (errores == 0) {
+        //Guardamos en una variable el código del cohete seleccionado en la select
+        codigo = SELECT_COHETE.value;
+        
+        //Llamamos a la función frenar cohete pasándole el código del cohete en cuestión
+        mostrarCoheteSelec(codigo);
+    }    
+});
 
-    //Usamos el método reduce
-    potenciaMaximaCohete = propulsores.reduce((total, currentValue) => {
-        return total += currentValue;
-    });
-
-    //Devolvemos el total
-    return potenciaMaximaCohete;
-}
