@@ -53,8 +53,8 @@ function mostrarCohetes() {
     cohetesBBDD.forEach(function (element, index) {
         //Creamos la entrada en la lista para el coche en cuestión
         li = document.createElement("li");
-        //Añadimos clases
-        li.classList.add("col-3");
+        //Añadimos clases    
+        li.classList.add("col-md-3");
         li.classList.add("mx-1");
         li.classList.add("mb-4");
         li.classList.add("p-2");
@@ -92,8 +92,7 @@ function limpiarForm() {
     });
 }
 /* ////////// Fes una funció que calculi la potència màxima del coet (serà el sumatori de les potències màximes dels propulsors) ////////// */
-function calcularPotenciaMaxima(cohete) {
-    var propulsores = cohete.propulsores; //Asignamos a una variable el array con las potencias máximas de cad propulsor
+function calcularPotenciaMaxima(propulsores) {
     var potenciaMaximaCohete = 0; //Esta variable será la potencia máxima del cohete, el sumatorio de las potencias máximas de los propulsores
     //Usamos el método reduce
     potenciaMaximaCohete = propulsores.reduce(function (total, currentValue) {
