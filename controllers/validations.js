@@ -3,9 +3,21 @@
 function coheteValidate() {
     //Contador de errores
     var acumErrores = 0;
+    //Boolean para guardar si el código ya está usado por otro cohete
+    var repetido = false;
     //Eliminamos todos los posibles is-invalid o is-valid que aparezcan en la lista de clases de cada elemento del formulario
     COHETE_FORM.classList.remove("is-invalid");
     COHETE_FORM.classList.remove("is-valid");
+    //Miramos si el código introducido ya lo tiene algún otro cohete, para ello miramos el array de cohetes
+    if (cohetesBBDD.length > 0) {
+        for (var i = 0; i < cohetesBBDD.length; i++) {
+            //Si el código del cohete del array es igual al código del cohete que estamos intentando crear, repetido es igual a true
+            if (cohetesBBDD[i].codigo == CODIGO.value.toUpperCase()) {
+                repetido = true;
+                break;
+            }
+        }
+    }
     //Validamos código
     if (CODIGO.value == "") {
         //Añadimos clase is-invalid
@@ -20,6 +32,14 @@ function coheteValidate() {
         CODIGO.classList.add("is-invalid");
         //Sacamos mensaje de error en el div correspondiente
         COHETE_FORM.querySelector("#errorCodigoCohete").textContent = "El código del cohete debe ser de 8 caracteres. Se aceptan letras y números";
+        //Sumamos 1 al contador
+        acumErrores++;
+    }
+    else if (repetido == true) { //Hay que validar también que no se repita el código, para que no hayan dos cohetes con el mismo código
+        //Añadimos clase is-invalid
+        CODIGO.classList.add("is-invalid");
+        //Sacamos mensaje de error en el div correspondiente
+        COHETE_FORM.querySelector("#errorCodigoCohete").textContent = "El código introducido ya está siendo usado por otro cohete";
         //Sumamos 1 al contador
         acumErrores++;
     }
@@ -84,7 +104,7 @@ function validarPropulsor(propulsor) {
 }
 //Función que nos sacará la clase is-invalid cuando hagamos blur y detecte que hayamos borrado el texto que había en el campo
 //Accedemos a la etiqueta form y vamos a añadirle un evento del tipo blur (evento que inicia cuando, habiendo seleccionado un input, lo deseleccionamos)
-COHETE_FORM.addEventListener('blur', function (event) {
+COHETE_FORM.addEventListener('mouseout', function (event) {
     //Si (el objeto que ha experimentado el evento está vacío), entonces quitaremos de la classList del objeto que ha experimentado el evento (la clase is-invalid). Por tanto, dejará de salir en rojo
     //(event.target! as HTMLInputElement) esta expresión es para hacer type casting y que TypeScript nos permita aplicar el .value y el .classList    
     if (event.target.value != '') {

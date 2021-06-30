@@ -288,5 +288,18 @@ function cambiarSecciones(): void {
 
     //Eliminamos la clase d-none del menú y la sustituimos por d-block
     MENU_SECTION.classList.remove("d-none");
-    MENU_SECTION.classList.add("d-block");    
+    MENU_SECTION.classList.add("d-block");      
+}
+
+
+/* ////////// Variante de la función cambiar secciones para el botón reiniciar ////////// */
+function cambiarSeccionesReset(): void {
+    //Solo se activará si detectamos que el formulario está oculto
+    if (FORM_SECTION.classList.contains("d-none")){
+        FORM_SECTION.classList.remove("d-none");
+        FORM_SECTION.classList.add("d-block");
+
+        MENU_SECTION.classList.remove("d-block");
+        MENU_SECTION.classList.add("d-none");
+    }    
 }

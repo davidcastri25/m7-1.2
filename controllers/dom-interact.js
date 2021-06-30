@@ -31,3 +31,6 @@ var ACELERAR_BUTTON = document.querySelector("#acelerarButton");
 var FRENAR_BUTTON = document.querySelector("#frenarButton");
 var MOSTRAR_BUTTON = document.querySelector("#mostrarButton");
 var MOSTRAR_ALL_BUTTON = document.querySelector("#mostrarAllButton");
+/* ////////// Sección de footer ////////// */
+//Guardo botón de reiniciar
+var RESET_BUTTON = document.querySelector("#resetButton");

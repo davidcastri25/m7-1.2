@@ -44,3 +44,8 @@ const ACELERAR_BUTTON = document.querySelector("#acelerarButton") as HTMLButtonE
 const FRENAR_BUTTON = document.querySelector("#frenarButton") as HTMLButtonElement;
 const MOSTRAR_BUTTON = document.querySelector("#mostrarButton") as HTMLButtonElement;
 const MOSTRAR_ALL_BUTTON = document.querySelector("#mostrarAllButton") as HTMLButtonElement;
+
+
+/* ////////// Sección de footer ////////// */
+//Guardo botón de reiniciar
+const RESET_BUTTON = document.querySelector("#resetButton") as HTMLButtonElement;

@@ -82,3 +82,21 @@ MOSTRAR_ALL_BUTTON.addEventListener("click", function (e) {
     //Llamamos a la función de mostrar todos los cohetes y todos los datos
     mostrarAllCohetes();
 });
+/* ////////// Botón de reiniciar ////////// */
+RESET_BUTTON.addEventListener("click", function (e) {
+    //Cambiamos formularios
+    cambiarSeccionesReset();
+    //Vaciamos container
+    CONTAINER.innerText = "";
+    //Vaciamos select (excepto la primera option) y volvemos a añadir la primera option
+    var SELECT_OPTIONS = SELECT_COHETE.querySelectorAll("option");
+    SELECT_OPTIONS.forEach(function (option) {
+        if (option.value != "Selecciona un cohete") {
+            option.remove();
+        }
+    });
+    //Limpiamos array cohetes
+    cohetesBBDD = [];
+    //Limpiamos formulario
+    limpiarForm();
+});

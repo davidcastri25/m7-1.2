@@ -112,3 +112,28 @@ MOSTRAR_ALL_BUTTON.addEventListener("click", (e: Event) => {
     mostrarAllCohetes();
 });
 
+
+/* ////////// Botón de reiniciar ////////// */
+RESET_BUTTON.addEventListener("click", (e: Event) => {
+    
+    //Cambiamos formularios
+    cambiarSeccionesReset();
+
+    //Vaciamos container
+    CONTAINER.innerText = "";
+
+    //Vaciamos select (excepto la primera option) y volvemos a añadir la primera option
+    const SELECT_OPTIONS = SELECT_COHETE.querySelectorAll("option") as NodeListOf<HTMLOptionElement>;
+    
+    SELECT_OPTIONS.forEach(option => {
+        if (option.value != "Selecciona un cohete"){
+            option.remove();
+        }
+    });        
+
+    //Limpiamos array cohetes
+    cohetesBBDD = [];
+
+    //Limpiamos formulario
+    limpiarForm();    
+});
